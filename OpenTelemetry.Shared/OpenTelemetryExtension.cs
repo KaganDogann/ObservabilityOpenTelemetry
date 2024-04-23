@@ -2,8 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
-using System.Data.Common;
-using System.Diagnostics;
 
 namespace OpenTelemetry.Shared;
 
