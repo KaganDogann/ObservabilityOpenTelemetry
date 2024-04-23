@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyObservability.ConsoleApp", "UdemyObservability.ConsoleApp\UdemyObservability.ConsoleApp.csproj", "{EA185FD8-15D0-4550-88A1-C5DF825E0CF5}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9B403B26-865C-40E2-8442-8E6790E7AEEA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payment.API", "Payment.API\Payment.API.csproj", "{1FAC85FA-F3AF-45F0-91F2-E7A3FCC8499A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Shared", "Common.Shared\Common.Shared.csproj", "{6BC64AFC-D626-4AF4-BE93-A93C006DEFDA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.API", "Order.API\Order.API.csproj", "{1CB15F5A-67E2-48FA-AA22-6567D754B158}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenTelemetry.Shared", "OpenTelemetry.Shared\OpenTelemetry.Shared.csproj", "{96BEF31F-CD9F-42BC-93CA-4B118E9D5A88}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stock.API", "Stock.API\Stock.API.csproj", "{61E8FDCD-59EB-4B0D-B23D-141365B8F5C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA185FD8-15D0-4550-88A1-C5DF825E0CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA185FD8-15D0-4550-88A1-C5DF825E0CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA185FD8-15D0-4550-88A1-C5DF825E0CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA185FD8-15D0-4550-88A1-C5DF825E0CF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B403B26-865C-40E2-8442-8E6790E7AEEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B403B26-865C-40E2-8442-8E6790E7AEEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B403B26-865C-40E2-8442-8E6790E7AEEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B403B26-865C-40E2-8442-8E6790E7AEEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FAC85FA-F3AF-45F0-91F2-E7A3FCC8499A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FAC85FA-F3AF-45F0-91F2-E7A3FCC8499A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FAC85FA-F3AF-45F0-91F2-E7A3FCC8499A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FAC85FA-F3AF-45F0-91F2-E7A3FCC8499A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BC64AFC-D626-4AF4-BE93-A93C006DEFDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC64AFC-D626-4AF4-BE93-A93C006DEFDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC64AFC-D626-4AF4-BE93-A93C006DEFDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC64AFC-D626-4AF4-BE93-A93C006DEFDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CB15F5A-67E2-48FA-AA22-6567D754B158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB15F5A-67E2-48FA-AA22-6567D754B158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB15F5A-67E2-48FA-AA22-6567D754B158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB15F5A-67E2-48FA-AA22-6567D754B158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96BEF31F-CD9F-42BC-93CA-4B118E9D5A88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96BEF31F-CD9F-42BC-93CA-4B118E9D5A88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96BEF31F-CD9F-42BC-93CA-4B118E9D5A88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96BEF31F-CD9F-42BC-93CA-4B118E9D5A88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E8FDCD-59EB-4B0D-B23D-141365B8F5C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E8FDCD-59EB-4B0D-B23D-141365B8F5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E8FDCD-59EB-4B0D-B23D-141365B8F5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E8FDCD-59EB-4B0D-B23D-141365B8F5C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {371A317B-2483-41F0-ACC5-3CCAAA433CAD}
+	EndGlobalSection
+EndGlobal
