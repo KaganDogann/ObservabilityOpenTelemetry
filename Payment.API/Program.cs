@@ -1,6 +1,8 @@
 using Common.Shared;
 using OpenTelemetry.Shared;
+using Serilog;
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog(Logging.Shared.Logging.ConfigureLogging);
 
 // Add services to the container.
 

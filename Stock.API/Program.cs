@@ -1,11 +1,13 @@
 using Common.Shared;
 using MassTransit;
 using OpenTelemetry.Shared;
+using Serilog;
 using Stock.API;
 using Stock.API.Consumers;
 using Stock.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog(Logging.Shared.Logging.ConfigureLogging);
 
 // Add services to the container.
 
