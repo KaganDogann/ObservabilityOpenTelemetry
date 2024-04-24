@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Common.Shared.Events;
+using MassTransit;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Order.API.OrderServices;
 
@@ -9,10 +11,12 @@ namespace Order.API.Controllers;
 public class OrderController : ControllerBase
 {
     private readonly OrderService _orderService;
+    private readonly IPublishEndpoint _publishEndpoint;
 
-    public OrderController(OrderService orderService)
+    public OrderController(OrderService orderService, IPublishEndpoint publishEndpoint)
     {
         _orderService = orderService;
+        _publishEndpoint = publishEndpoint;
     }
 
     [HttpPost]
@@ -29,5 +33,17 @@ public class OrderController : ControllerBase
         //var b = 0;     EXCEPTION 
         //var c = a / b; 
         #endregion
+    }
+
+
+    [HttpGet]
+
+    public async Task<IActionResult> SendOrderCreatedEvent()
+    {
+        //Kuyruğa mesaj gönder
+
+        await _publishEndpoint.Publish(new OrderCreatedEvent() { OrderCode = Guid.NewGuid().ToString() });
+
+        return Ok();
     }
 }
