@@ -1,4 +1,5 @@
 using Common.Shared;
+using Logging.Shared;
 using OpenTelemetry.Shared;
 using Serilog;
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +24,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseMiddleware<OpenTelemetryTraceIdMiddleware>();
+
 app.UseMiddleware<RequestAndResponseActivityMiddleware>();
+
+app.UseExceptionMiddleware();
 
 app.UseAuthorization();
 

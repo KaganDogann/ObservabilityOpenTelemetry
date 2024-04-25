@@ -8,10 +8,12 @@ public class StockService
 {
 
     private readonly PaymentService _paymentService;
+    private  readonly ILogger<StockService> _logger;
 
-    public StockService(PaymentService paymentService)
+    public StockService(PaymentService paymentService, ILogger<StockService> logger)
     {
         _paymentService = paymentService;
+        _logger = logger;
     }
 
     private Dictionary<int, int> GetProductStockList()
@@ -44,6 +46,9 @@ public class StockService
             return ResponseDto<StockCheckAndPaymentResponseDto>.Fail(HttpStatusCode.BadRequest.GetHashCode(), "Stock Yetersiz.");
         }
 
+        throw new DivideByZeroException("Bölünme hatası meydana geldi.");
+
+        _logger.LogInformation("Stock ayrıldı oderCode:{@orderCode}", requestDto.OrderCode);
 
         var (isSuccess, failMessage) = await _paymentService.CreatePaymentProcess(new PaymentCreateRequestDto()
         {

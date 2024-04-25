@@ -1,4 +1,5 @@
 using Common.Shared;
+using Logging.Shared;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using OpenTelemetry.Shared;
@@ -73,7 +74,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseMiddleware<OpenTelemetryTraceIdMiddleware>();
+
 app.UseMiddleware<RequestAndResponseActivityMiddleware>();
+
+app.UseExceptionMiddleware();
 
 app.UseAuthorization();
 

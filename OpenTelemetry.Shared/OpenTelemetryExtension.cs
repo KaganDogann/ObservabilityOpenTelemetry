@@ -66,6 +66,14 @@ public static class OpenTelemetryExtension
 
             options.AddHttpClientInstrumentation(httpOptions =>
             {
+
+                httpOptions.FilterHttpRequestMessage = (request) =>
+                {
+                    //http://localhost:9200
+
+                    return !request.RequestUri.AbsoluteUri.Contains("9200", StringComparison.InvariantCulture); // 920 varsa elestic için trace data üretme demiş oluyoruz
+                };
+
                 httpOptions.EnrichWithHttpRequestMessage = async (activity, request) =>
                 {
                     var requestContent = "empty";
