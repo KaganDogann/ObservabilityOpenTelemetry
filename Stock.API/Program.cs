@@ -1,6 +1,8 @@
 using Common.Shared;
 using Logging.Shared;
 using MassTransit;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Resources;
 using OpenTelemetry.Shared;
 using Serilog;
 using Stock.API;
@@ -8,7 +10,16 @@ using Stock.API.Consumers;
 using Stock.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Host.UseSerilog(Logging.Shared.Logging.ConfigureLogging);
+//builder.Host.UseSerilog(Logging.Shared.Logging.ConfigureLogging);
+//builder.AddOpenTelemetryLog();
+
+builder.Logging.AddOpenTelemetry(cfg =>
+{
+    var serviceName = builder.Configuration.GetSection("OpenTelemetry")["ServiceName"];
+    var serviceVersion = builder.Configuration.GetSection("OpenTelemetry")["ServiceVersion"];
+    cfg.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(serviceName!, serviceVersion: serviceVersion));
+    cfg.AddOtlpExporter((x, y) => { });
+});
 
 // Add services to the container.
 

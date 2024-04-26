@@ -2,6 +2,8 @@ using Common.Shared;
 using Logging.Shared;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Resources;
 using OpenTelemetry.Shared;
 using Order.API.Models;
 using Order.API.OrderServices;
@@ -11,7 +13,17 @@ using Serilog;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Host.UseSerilog(Logging.Shared.Logging.ConfigureLogging);
+//builder.Host.UseSerilog(Logging.Shared.Logging.ConfigureLogging);
+//builder.AddOpenTelemetryLog(); //Paketten patladýk bu yüzden buraya taþýdýk 
+
+builder.Logging.AddOpenTelemetry(cfg =>
+{
+    var serviceName = builder.Configuration.GetSection("OpenTelemetry")["ServiceName"];
+    var serviceVersion = builder.Configuration.GetSection("OpenTelemetry")["ServiceVersion"];
+    cfg.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(serviceName!, serviceVersion: serviceVersion));
+    cfg.AddOtlpExporter((x, y) => { });
+});
+
 
 // Add services to the container.
 

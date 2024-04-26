@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Resources;
 using Serilog;
 using Serilog.Exceptions;
 using Serilog.Formatting.Elasticsearch;
@@ -7,6 +11,33 @@ namespace Logging.Shared;
 
 public static class Logging
 {
+    //public static void AddOpenTelemetryLog(this WebApplicationBuilder builder) //Neden? 
+    //{
+
+
+    //    builder.Logging.AddOpenTelemetry(cfg =>
+    //    {
+    //        var serviceName = builder.Configuration.GetSection("OpenTelemetry")["ServiceName"];
+    //        var serviceVersion = builder.Configuration.GetSection("OpenTelemetry")["ServiceVersion"];
+
+    //        cfg.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(serviceName!, serviceVersion));
+
+    //        cfg.AddOtlpExporter();
+    //    });
+    //}
+
+    public static void AddOpenTelemetryLog(this WebApplicationBuilder builder)
+    {
+
+        builder.Logging.AddOpenTelemetry(cfg =>
+        {
+            var serviceName = builder.Configuration.GetSection("OpenTelemetry")["ServiceName"];
+            var serviceVersion = builder.Configuration.GetSection("OpenTelemetry")["ServiceVersion"];
+            cfg.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(serviceName!, serviceVersion: serviceVersion));
+            cfg.AddOtlpExporter();
+        });
+    }
+
     // Action delegesi nedir? parametre alan geriye bir şey dönmeyen metotları temsil eder. 
     public static Action<HostBuilderContext, LoggerConfiguration> ConfigureLogging => (builderContext, loggerConfiguration) =>
     {

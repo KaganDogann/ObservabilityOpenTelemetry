@@ -46,7 +46,7 @@ public class StockService
             return ResponseDto<StockCheckAndPaymentResponseDto>.Fail(HttpStatusCode.BadRequest.GetHashCode(), "Stock Yetersiz.");
         }
 
-        throw new DivideByZeroException("Bölünme hatası meydana geldi.");
+        
 
         _logger.LogInformation("Stock ayrıldı oderCode:{@orderCode}", requestDto.OrderCode);
 
