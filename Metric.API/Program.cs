@@ -19,12 +19,6 @@ builder.Services.AddOpenTelemetry().WithMetrics(options =>
         resource.AddService("Metric.API", serviceVersion: "1.0.0");
     });
     options.AddPrometheusExporter();
-
-
-
-
-
-
 });
 
 var app = builder.Build();
